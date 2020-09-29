@@ -80,6 +80,7 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HouseHold.vb" />
     <Compile Include="IPerson.vb" />
     <Compile Include="Items.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
