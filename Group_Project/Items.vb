@@ -71,25 +71,28 @@ Public Class Items
         End If
     End Function
 
-    'Overridable function that will calculate average of recycable and waste items
-    Public Overridable Function CalcAve(numItems As Integer) As Double
-        Throw New Exception
-    End Function
-
-    'Function that will return string based on each average of recycable and non recycable items 
-    Public Overridable Function CalcRating() As String
-        Throw New Exception
-    End Function
-
-    'Function that will do same as previous function excpet will use MyClass to that function
-    Public Overridable Function Rating() As String
-        Throw New Exception
-    End Function
-
     'Function that return string of details of each item displayed
     Public Overridable Function Display() As String
-        Return "Item Name: " & ItemName & Environment.NewLine & "Type of Material:  " & Material & Environment.NewLine & "Rating: " & Rating()
+        Return "Item Name & Type of Material: " & ItemName & " Made of " & Material & Environment.NewLine
     End Function
 
-
+    ' This function to warn user about harm of item if it cannot be Disposed in other way
+    Public Overridable Function Warning() As String 'This form of function should be in nonReclable class
+        Select Case IsBiodigradable
+            Case True
+                If (IsReusable = True) Then
+                    Return Display() & " / NB!!! Should be Reused/Donated to Avoid Dumbing"
+                Else
+                    Return Display() & " / It is less harmful to environment"
+                End If
+            Case False
+                If (IsReusable = True) Then
+                    Return Display() & " / NB!!! Should be Reused/Donated to Avoid Dumbing"
+                Else
+                    Return Display() & " / NB!!! It is very Harmful to the Environment Dumbing Should be limited"
+                End If
+            Case Else
+                Return Nothing
+        End Select
+    End Function
 End Class
